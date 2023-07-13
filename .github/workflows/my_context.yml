@@ -1,0 +1,14 @@
+name: my_context
+on:
+ issues:
+    types: 
+      - opened  
+jobs:
+  print_context:
+    name: Inspect issue
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          CONTEXT_EVENT: ${{ toJSON(github.event) }}
+        run: |
+          echo $CONTEXT_EVENT
